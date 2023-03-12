@@ -1,21 +1,16 @@
 package jm.task.core.jdbc.dao;
 
 import jm.task.core.jdbc.model.User;
-import jm.task.core.jdbc.util.HibernateUtil;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
 import static jm.task.core.jdbc.util.HibernateUtil.getSessionFactory;
-import static jm.task.core.jdbc.util.Util.getConnection;
 
 public class UserDaoHibernateImpl implements UserDao {
-//    private Connection connection = getConnection();
-    private SessionFactory sessionFactory = getSessionFactory();
+
     public UserDaoHibernateImpl() {
 
     }
@@ -36,7 +31,7 @@ public class UserDaoHibernateImpl implements UserDao {
                     "PRIMARY KEY (ID))").executeUpdate();
             // commit transaction
             transaction.commit();
-            System.out.println("Создана таблица USERS с колонками ID, NAME, LAST NAME, AGE.");
+            System.out.println("Создана таблица USERS с колонками ID, NAME, LASTNAME, AGE.");
             System.out.println("-------------------------------------------------");
         } catch (Exception e) {
             if (transaction != null) {
